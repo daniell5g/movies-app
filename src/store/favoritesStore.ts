@@ -1,4 +1,5 @@
 import { Movie } from '@utils/interfaces';
+import { FAVORITES_KEY } from 'src/configs/constants';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
@@ -28,15 +29,15 @@ export const useFavoritesStore = create<FavoritesState>()(
     {
       name: 'favorites-storage',
       storage: {
-        getItem: async (name) => {
-          const value = await storage.getItem(name);
+        getItem: async () => {
+          const value = await storage.getItem(FAVORITES_KEY);
           return value ? JSON.parse(value) : null;
         },
-        setItem: async (name, value) => {
-          await storage.setItem(name, JSON.stringify(value));
+        setItem: async (value) => {
+          await storage.setItem(FAVORITES_KEY, JSON.stringify(value));
         },
-        removeItem: async (name) => {
-          await storage.removeItem(name);
+        removeItem: async () => {
+          await storage.removeItem(FAVORITES_KEY);
         },
       },
     }
