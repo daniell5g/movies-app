@@ -13,4 +13,5 @@ export type ParamList = {
     movieId: number;
   }
   FavoritePage: undefined;
+  SettingsPage: undefined;
 };
