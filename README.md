@@ -33,6 +33,7 @@ Esse é um projeto de um app mobile para você que gosta de assistir filmes, sé
    ```
    cd movies-app
    yarn
+   e adiciona sua api_key do tmdb
    ```
 3. Agora, para rodar o projeto no android, por exemplo, execute o seguinte comando:
    ```
