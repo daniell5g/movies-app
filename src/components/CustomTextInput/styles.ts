@@ -32,7 +32,7 @@ export const Label = styled.Text<{ isFocused: boolean }>`
   
   font-size: ${({ isFocused }) => (isFocused ? 12 : 16)}px;
 
-  color: ${({ theme }) => theme.colors.secondary};
+  color: ${({ theme, isFocused }) => isFocused ? theme.colors.primary : theme.colors.secondary};
   transition: top 0.2s ease, font-size 0.2s ease;
 `;
 
