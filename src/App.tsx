@@ -11,11 +11,12 @@ import {
 } from "@expo-google-fonts/roboto";
 import { StatusBar } from 'expo-status-bar'
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { ThemeProvider } from 'styled-components/native'
 
 import { AppLoading } from './components/AppLoading';
 import { useThemeSwitcher } from './hooks/useThemeSwitcher'
+import { Routes } from './navigation';
 
 export default function App() {
   const { theme } = useThemeSwitcher()
@@ -34,27 +35,11 @@ export default function App() {
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <View style={styles.container}>
-        <Text style={{ color: theme.colors.primary, fontFamily: theme.fonts.secondaryBold }}>
-          BRQ Movies
-        </Text>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <ThemeProvider theme={theme}>
         <StatusBar style="auto" />
-      </View>
-    </ThemeProvider>
+        <Routes />
+      </ThemeProvider>
+    </GestureHandlerRootView >
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    marginTop: 20,
-  },
-})
