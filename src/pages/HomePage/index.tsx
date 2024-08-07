@@ -1,6 +1,7 @@
 import { ItemMovieCard } from '@components/ItemMovieCard';
 import { AntDesign, Feather } from '@expo/vector-icons'
 import { useNetworkStatus } from '@hooks/useNetworkStatus';
+import { useNavigation } from '@react-navigation/native';
 import type { Movie } from '@utils/interfaces';
 import React, { useEffect, useState } from 'react'
 import { api } from 'src/services/axios/api';
@@ -9,6 +10,7 @@ import * as S from './styles'
 
 export const HomePage = () => {
   const isConnected = useNetworkStatus();
+  const navigation = useNavigation();
 
   const [listMovies, setListMovies] = useState<Movie[]>([]);
   const [searchResultMovies, setSearchResultMovies] = useState<Movie[]>([]);
@@ -75,7 +77,9 @@ export const HomePage = () => {
 
   const componentMovieItem = ({ item }: { item: Movie }) =>
   (
-    <ItemMovieCard info={item} onPress={() => console.log('Movie')} />
+    <ItemMovieCard info={item} onPress={() => navigation.navigate('DetailsPage', {
+      movieId: item.id
+    })} />
   )
 
   useEffect(() => {
@@ -128,14 +132,18 @@ export const HomePage = () => {
           onEndReached={loadMoreMovies}
           onEndReachedThreshold={0.5}
           showsVerticalScrollIndicator={false}
-          ListEmptyComponent={
-            <S.ListEmptyComponent>
-              <AntDesign name='inbox' size={38} color='#e5e5e5' />
-              <S.EmptyText>
-                Nada para exibir
-              </S.EmptyText>
-            </S.ListEmptyComponent>
-          }
+          ListEmptyComponent={() => {
+            if (!loading) {
+              return (
+                <S.ListEmptyComponent>
+                  <AntDesign name='inbox' size={38} color='#e5e5e5' />
+                  <S.EmptyText>
+                    Nada para exibir
+                  </S.EmptyText>
+                </S.ListEmptyComponent>
+              )
+            }
+          }}
         />
 
         {loading && (

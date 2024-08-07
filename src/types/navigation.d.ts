@@ -9,4 +9,7 @@ export type ParamList = {
   ConfigAccessibilityPage: undefined;
   SignInPage: undefined;
   HomePage: undefined;
+  DetailsPage: {
+    movieId: number;
+  }
 };
