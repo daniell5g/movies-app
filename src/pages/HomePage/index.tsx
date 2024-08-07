@@ -104,7 +104,7 @@ export const HomePage = () => {
       <S.Header>
         <S.NameApp>BRQ Movies</S.NameApp>
 
-        <S.ActionHeaderRight>
+        <S.ActionHeaderRight onPress={() => navigation.navigate('SettingsPage')}>
           <Feather name='settings' size={24} color='#fff' />
         </S.ActionHeaderRight>
       </S.Header>
@@ -133,7 +133,7 @@ export const HomePage = () => {
           onEndReachedThreshold={0.5}
           showsVerticalScrollIndicator={false}
           ListEmptyComponent={() => {
-            if (!loading) {
+            if (movies.length === 0) {
               return (
                 <S.ListEmptyComponent>
                   <AntDesign name='inbox' size={38} color='#e5e5e5' />
