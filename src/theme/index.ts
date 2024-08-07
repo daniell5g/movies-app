@@ -1,13 +1,29 @@
-import colorBlind from 'color-blind'
+import colorBlind from 'color-blind';
 
-const defaultColors = {
+type Colors = {
+  primary: string;
+  secondary: string;
+  tertiary: string;
+  neutral: string;
+};
+
+type Fonts = {
+  regular: string;
+  medium: string;
+  bold: string;
+  secondaryRegular: string;
+  secondaryMedium: string;
+  secondaryBold: string;
+};
+
+const defaultColors: Colors = {
   primary: '#EC8B00',
   secondary: '#FFFFFF',
   tertiary: '#2E2F33',
   neutral: '#16171B',
-}
+};
 
-const defaultFonts = {
+const defaultFonts: Fonts = {
   regular: 'Nunito_400Regular',
   medium: 'Nunito_500Medium',
   bold: 'Nunito_700Bold',
@@ -16,7 +32,7 @@ const defaultFonts = {
   secondaryBold: 'Roboto_700Bold',
 };
 
-const themes = {
+export const themes = {
   default: {
     colors: defaultColors,
     fonts: defaultFonts,
@@ -48,6 +64,7 @@ const themes = {
     },
     fonts: defaultFonts,
   },
-}
+};
 
-export default themes
+export type ThemeName = keyof typeof themes;
+export type ThemeType = typeof themes.default;
