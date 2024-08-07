@@ -1,5 +1,29 @@
 {
-  "compilerOptions": {},
+  "compilerOptions": {
+    "strict": true,
+    "noImplicitAny": false,
+    "baseUrl": "./",
+    "paths": {
+      "@components/*": [
+        "./src/components/*"
+      ],
+      "@screens/*": [
+        "./src/screens/*"
+      ],
+      "@context/*": [
+        "./src/context/*"
+      ],
+      "@assets/*": [
+        "./src/assets/*"
+      ],
+      "@hooks/*": [
+        "./src/hooks/*"
+      ],
+      "@utils/*": [
+        "./src/utils/*"
+      ]
+    }
+  },
   "extends": "expo/tsconfig.base",
   "exclude": [
     "node_modules",
@@ -8,7 +32,8 @@
     "jest.config.js"
   ],
   "include": [
-    "./src/**/*.{ts,tsx}",
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
     "**/*.ts",
     "**/*.tsx",
     "index.js"
