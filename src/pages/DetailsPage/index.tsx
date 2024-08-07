@@ -26,7 +26,6 @@ export const DetailsPage = () => {
 
   const isFavorite = favorites.some((movie) => movie.id === movieId);
 
-
   const handleGoBack = () => {
     navigation.navigate('HomePage');
   }

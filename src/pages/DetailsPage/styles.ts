@@ -17,7 +17,7 @@ export const Header = styled.View`
   flex-direction: row;
   justify-content: space-between;
 
-  padding-horizontal: 24px;
+  padding-horizontal: 16px;
   z-index: 10;
 `;
 
