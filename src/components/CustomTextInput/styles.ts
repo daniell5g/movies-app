@@ -1,4 +1,3 @@
-import { Feather } from '@expo/vector-icons';
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
@@ -36,10 +35,10 @@ export const Label = styled.Text<{ isFocused: boolean }>`
   transition: top 0.2s ease, font-size 0.2s ease;
 `;
 
-export const LeftIcon = styled(Feather)`
+export const LeftIcon = styled`
   margin-right: 10px;
 `;
 
-export const ClearIcon = styled(Feather)`
+export const ClearIcon = styled`
   margin-left: 10px;
 `;
