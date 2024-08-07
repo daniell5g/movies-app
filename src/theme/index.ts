@@ -7,9 +7,19 @@ const defaultColors = {
   neutral: '#16171B',
 }
 
+const defaultFonts = {
+  regular: 'Nunito_400Regular',
+  medium: 'Nunito_500Medium',
+  bold: 'Nunito_700Bold',
+  secondaryRegular: 'Roboto_400Regular',
+  secondaryMedium: 'Roboto_500Medium',
+  secondaryBold: 'Roboto_700Bold',
+};
+
 const themes = {
   default: {
     colors: defaultColors,
+    fonts: defaultFonts,
   },
   protanopia: {
     colors: {
@@ -18,6 +28,7 @@ const themes = {
       tertiary: colorBlind.protanopia(defaultColors.tertiary),
       neutral: colorBlind.protanopia(defaultColors.neutral),
     },
+    fonts: defaultFonts,
   },
   deuteranopia: {
     colors: {
@@ -26,6 +37,7 @@ const themes = {
       tertiary: colorBlind.deuteranopia(defaultColors.tertiary),
       neutral: colorBlind.deuteranopia(defaultColors.neutral),
     },
+    fonts: defaultFonts,
   },
   tritanopia: {
     colors: {
@@ -34,6 +46,7 @@ const themes = {
       tertiary: colorBlind.tritanopia(defaultColors.tertiary),
       neutral: colorBlind.tritanopia(defaultColors.neutral),
     },
+    fonts: defaultFonts,
   },
 }
 
