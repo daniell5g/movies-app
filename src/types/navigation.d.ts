@@ -7,4 +7,6 @@ declare global {
 export type ParamList = {
   SplashPage: undefined;
   ConfigAccessibilityPage: undefined;
+  SignInPage: undefined;
+  HomePage: undefined;
 };
