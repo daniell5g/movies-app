@@ -17,7 +17,7 @@ export const Header = styled.View`
 
 export const NameApp = styled.Text`
   font-size: 24px;
-  font-family: ${({ theme }) => theme.fonts.regular};
+  font-family: ${({ theme }) => theme.fonts.bold};
 
   color: ${({ theme }) => theme.colors.secondary};
 `;

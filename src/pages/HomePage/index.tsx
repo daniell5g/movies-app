@@ -1,12 +1,12 @@
 import { ItemMovieCard } from '@components/ItemMovieCard';
-import { AntDesign, Feather } from '@expo/vector-icons'
+import { AntDesign, Feather } from '@expo/vector-icons';
 import { useNetworkStatus } from '@hooks/useNetworkStatus';
 import { useNavigation } from '@react-navigation/native';
 import type { Movie } from '@utils/interfaces';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react';
 import { api } from 'src/services/axios/api';
 
-import * as S from './styles'
+import * as S from './styles';
 
 export const HomePage = () => {
   const isConnected = useNetworkStatus();
@@ -17,9 +17,12 @@ export const HomePage = () => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [loading, setLoading] = useState(false);
+  const [searchLoading, setSearchLoading] = useState(false);
   const [noResult, setNoResult] = useState(false);
   const [search, setSearch] = useState("");
   const [error, setError] = useState("");
+
+  const debounceRef = useRef<NodeJS.Timeout | null>(null);
 
   const movies = search.length > 2 ? searchResultMovies : listMovies;
 
@@ -36,15 +39,14 @@ export const HomePage = () => {
       setTotalPages(response.data.total_pages);
       setError("");
     } catch (error: any) {
-      // !! A api não retorna message quando há erro, apenas status
       setError("Não foi possível carregar os filmes");
     } finally {
       setLoading(false);
     }
   };
 
-  const searcheMovies = async (query: string) => {
-    setLoading(true);
+  const searchMovies = async (query: string) => {
+    setSearchLoading(true);
     try {
       const response = await api.get("/search/movie", {
         params: {
@@ -54,33 +56,42 @@ export const HomePage = () => {
 
       if (response.data.results.length === 0) {
         setNoResult(true);
-        setLoading(false);
-        setSearchResultMovies([])
+        setSearchResultMovies([]);
       } else {
         setNoResult(false);
         setSearchResultMovies(response.data.results);
-        setLoading(false);
       }
+      setError("");
     } catch (error: any) {
-      setError(error?.response?.data.message);
+      setError("Erro ao buscar filmes");
+    } finally {
+      setSearchLoading(false);
     }
   };
 
   const handleSearchMovies = (text: string) => {
     setSearch(text);
+    if (debounceRef.current) {
+      clearTimeout(debounceRef.current);
+    }
     if (text.length > 2) {
-      searcheMovies(text);
+      debounceRef.current = setTimeout(() => {
+        searchMovies(text);
+      }, 500);
     } else {
       setSearchResultMovies([]);
+      setNoResult(false);
     }
   };
 
-  const componentMovieItem = ({ item }: { item: Movie }) =>
-  (
-    <ItemMovieCard info={item} onPress={() => navigation.navigate('DetailsPage', {
-      movieId: item.id
-    })} />
-  )
+  const componentMovieItem = ({ item }: { item: Movie }) => (
+    <ItemMovieCard
+      info={item}
+      onPress={() => navigation.navigate('DetailsPage', {
+        movieId: item.id,
+      })}
+    />
+  );
 
   useEffect(() => {
     loadMoreMovies();
@@ -111,7 +122,11 @@ export const HomePage = () => {
 
       <S.SessionSearch>
         <S.Label>Qual o filme está buscando?</S.Label>
-        <S.SearchInput placeholder='Busque seu filme aqui...' value={search} onChangeText={handleSearchMovies} />
+        <S.SearchInput
+          placeholder='Busque seu filme aqui...'
+          value={search}
+          onChangeText={handleSearchMovies}
+        />
       </S.SessionSearch>
 
       {noResult && (
@@ -132,26 +147,23 @@ export const HomePage = () => {
           onEndReached={loadMoreMovies}
           onEndReachedThreshold={0.5}
           showsVerticalScrollIndicator={false}
-          ListEmptyComponent={() => {
-            if (movies.length === 0) {
-              return (
-                <S.ListEmptyComponent>
-                  <AntDesign name='inbox' size={38} color='#e5e5e5' />
-                  <S.EmptyText>
-                    Nada para exibir
-                  </S.EmptyText>
-                </S.ListEmptyComponent>
-              )
-            }
-          }}
         />
 
-        {loading && (
+        {(loading || searchLoading) && (
           <S.LoadingMoviesContainer>
             <S.LoadingMoviesIndicator />
           </S.LoadingMoviesContainer>
         )}
       </S.SessionMovies>
+
+      {!loading && !searchLoading && movies.length === 0 && (
+        <S.ListEmptyComponent>
+          <AntDesign name='inbox' size={38} color='#e5e5e5' />
+          <S.EmptyText>
+            Nada para exibir
+          </S.EmptyText>
+        </S.ListEmptyComponent>
+      )}
 
       <S.FloatingActionFavorite
         onPress={() => navigation.navigate('FavoritePage')}
@@ -159,5 +171,5 @@ export const HomePage = () => {
         <Feather name='heart' size={24} color='#fff' />
       </S.FloatingActionFavorite>
     </S.Container>
-  )
-}
+  );
+};
