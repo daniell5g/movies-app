@@ -5,6 +5,7 @@ type Colors = {
   secondary: string;
   tertiary: string;
   neutral: string;
+  green: string;
 };
 
 type Fonts = {
@@ -21,6 +22,7 @@ const defaultColors: Colors = {
   secondary: '#FFFFFF',
   tertiary: '#2E2F33',
   neutral: '#16171B',
+  green: '#21D07A',
 };
 
 const defaultFonts: Fonts = {
@@ -43,6 +45,7 @@ export const themes = {
       secondary: colorBlind.protanopia(defaultColors.secondary),
       tertiary: colorBlind.protanopia(defaultColors.tertiary),
       neutral: colorBlind.protanopia(defaultColors.neutral),
+      green: colorBlind.protanopia(defaultColors.green),
     },
     fonts: defaultFonts,
   },
@@ -52,6 +55,7 @@ export const themes = {
       secondary: colorBlind.deuteranopia(defaultColors.secondary),
       tertiary: colorBlind.deuteranopia(defaultColors.tertiary),
       neutral: colorBlind.deuteranopia(defaultColors.neutral),
+      green: colorBlind.deuteranopia(defaultColors.green),
     },
     fonts: defaultFonts,
   },
@@ -61,6 +65,7 @@ export const themes = {
       secondary: colorBlind.tritanopia(defaultColors.secondary),
       tertiary: colorBlind.tritanopia(defaultColors.tertiary),
       neutral: colorBlind.tritanopia(defaultColors.neutral),
+      green: colorBlind.tritanopia(defaultColors.green),
     },
     fonts: defaultFonts,
   },
