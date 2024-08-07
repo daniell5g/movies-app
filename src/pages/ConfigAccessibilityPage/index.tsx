@@ -21,7 +21,7 @@ export const ConfigAccessibilityPage = () => {
     changeTheme(selected)
     await storage.setItem(CONFIG_ACCESSIBILITY_KEY, selected)
 
-    navigation.navigate('SplashPage')
+    navigation.navigate('SignInPage')
   }, [selected])
 
   return (
