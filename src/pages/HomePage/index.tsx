@@ -153,7 +153,9 @@ export const HomePage = () => {
         )}
       </S.SessionMovies>
 
-      <S.FloatingActionFavorite>
+      <S.FloatingActionFavorite
+        onPress={() => navigation.navigate('FavoritePage')}
+      >
         <Feather name='heart' size={24} color='#fff' />
       </S.FloatingActionFavorite>
     </S.Container>

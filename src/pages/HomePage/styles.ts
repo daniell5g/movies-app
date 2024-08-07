@@ -134,7 +134,7 @@ export const EmptyText = styled.Text`
   color: #e5e5e5;
 `
 
-export const FloatingActionFavorite = styled.View`
+export const FloatingActionFavorite = styled.TouchableOpacity`
   position: absolute;
   bottom: 20px;
   right: 20px;
