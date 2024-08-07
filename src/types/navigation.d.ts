@@ -12,4 +12,5 @@ export type ParamList = {
   DetailsPage: {
     movieId: number;
   }
+  FavoritePage: undefined;
 };

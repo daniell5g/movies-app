@@ -1,6 +1,7 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
 import { DetailsPage } from 'src/pages/DetailsPage';
+import { FavoritePage } from 'src/pages/FavoritePage';
 import { HomePage } from 'src/pages/HomePage';
 
 const { Navigator, Screen } = createNativeStackNavigator();
@@ -15,6 +16,7 @@ export const PrivateRoutes = () => {
     >
       <Screen name="HomePage" component={HomePage} />
       <Screen name="DetailsPage" component={DetailsPage} />
+      <Screen name="FavoritePage" component={FavoritePage} />
     </Navigator>
   )
 }
