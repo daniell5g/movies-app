@@ -39,17 +39,12 @@ export const Body = styled.View`
   padding-bottom: 20px;
 `
 
-export const LoadingIndicatorContainer = styled.View`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  
+export const LoadingIndicatorContainer = styled.View`  
   align-items: center;
   justify-content: center;
 
   padding-horizontal: 24px;
+  height: 600px;
 `
 
 export const LoadingIndicator = styled.ActivityIndicator.attrs({
