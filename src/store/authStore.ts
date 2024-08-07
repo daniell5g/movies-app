@@ -27,7 +27,18 @@ export const useAuthStore = create<AuthState>()(
     }),
     {
       name: 'auth-storage',
-      getStorage: () => storage,
+      storage: {
+        getItem: async (name) => {
+          const value = await storage.getItem(name);
+          return value ? JSON.parse(value) : null;
+        },
+        setItem: async (name, value) => {
+          await storage.setItem(name, JSON.stringify(value));
+        },
+        removeItem: async (name) => {
+          await storage.removeItem(name);
+        }
+      },
     }
   )
 );
