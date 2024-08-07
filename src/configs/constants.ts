@@ -1,1 +1,1 @@
-export const THEME_KEY = 'app_theme'
+export const THEME_KEY = '@moviesapp:theme'
