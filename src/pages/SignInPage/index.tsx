@@ -2,6 +2,7 @@ import CustomTextInput from '@components/CustomTextInput'
 import { ImageLogo } from '@components/Logo'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useAuth } from '@hooks/useAuth'
+import { useNetworkStatus } from '@hooks/useNetworkStatus'
 import React, { useEffect, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { type AuthFormData, authSchema } from 'src/libs/zod/user'
@@ -10,6 +11,7 @@ import * as S from './styles'
 
 export const SignInPage = () => {
   const { login } = useAuth();
+  const isConnected = useNetworkStatus();
 
   const [error, setError] = useState<string | null>(null)
 
@@ -20,8 +22,13 @@ export const SignInPage = () => {
   const handleSubmit = (data: AuthFormData) => {
     try {
       if (data.username === 'user' && data.password === '123') {
-        login();
-      } else {
+        if (isConnected) {
+          login();
+        } else {
+          setError('Sem conexão com a internet');
+        }
+      }
+      else {
         setError('Credenciais inválidas')
       }
     } catch (error: any) {
