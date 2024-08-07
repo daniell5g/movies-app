@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "strict": true,
+    "noImplicitAny": false,
     "baseUrl": "./",
     "paths": {
       "@components/*": [
@@ -21,7 +22,7 @@
       "@utils/*": [
         "./src/utils/*"
       ]
-    },
+    }
   },
   "extends": "expo/tsconfig.base",
   "exclude": [
@@ -29,5 +30,12 @@
     "babel.config.js",
     "metro.config.js",
     "jest.config.js"
+  ],
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+    "**/*.ts",
+    "**/*.tsx",
+    "index.js"
   ]
 }

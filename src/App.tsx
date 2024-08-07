@@ -15,11 +15,11 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { ThemeProvider } from 'styled-components/native'
 
 import { AppLoading } from './components/AppLoading';
-import { useThemeSwitcher } from './hooks/useThemeSwitcher'
 import { Routes } from './navigation';
+import { useThemeStore } from './store/themeStore';
 
 export default function App() {
-  const { theme } = useThemeSwitcher()
+  const theme = useThemeStore((state) => state.theme);
 
   const [fontsLoaded] = useFonts({
     Nunito_400Regular,
