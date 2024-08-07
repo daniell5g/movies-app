@@ -1,6 +1,7 @@
 import type { Movie } from '@utils/interfaces';
 import { useEffect, useState } from 'react';
-import { api } from 'src/services/axios/api';
+
+import { api } from '../services/axios/api';
 
 export const useMovieDetails = (movieId: number) => {
   const [movieDetails, setMovieDetails] = useState<Movie | null>(null);

@@ -5,9 +5,9 @@ import * as S from './styles'
 
 export const AppLoading = () => {
   return (
-    <S.LoadingContainer>
+    <S.LoadingContainer testID="loading-container">
       <ImageLogo />
-      <S.LoadingIndicator />
+      <S.LoadingIndicator testID="loading-indicator" />
     </S.LoadingContainer>
   )
 }

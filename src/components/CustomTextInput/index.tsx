@@ -15,11 +15,12 @@ const CustomTextInput: React.FC<Props> = ({ label, leftIcon, isPassword, ...prop
   const [text, setText] = useState('');
 
   return (
-    <S.Container {...props}>
-      <S.Label isFocused={isFocused || !!text}>{label}</S.Label>
+    <S.Container {...props} testID="container-input-custom">
+      <S.Label testID="label-input-custom" isFocused={isFocused || !!text}>{label}</S.Label>
       <S.InputContainer>
-        {leftIcon && <S.LeftIcon name={leftIcon} size={24} color='#fff' />}
+        {leftIcon && <S.LeftIcon testID="left-icon" name={leftIcon} size={24} color='#fff' />}
         <S.StyledTextInput
+          testID="input-text-custom"
           secureTextEntry={isPassword}
           onFocus={() => setIsFocused(true)}
           value={text}

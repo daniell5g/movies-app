@@ -1,7 +1,7 @@
 import { MaterialIcons } from '@expo/vector-icons'
 import type { Movie } from '@utils/interfaces';
-import { useFavoritesStore } from 'src/store/favoritesStore';
 
+import { useFavoritesStore } from '../../store/favoritesStore';
 import * as S from './styles'
 
 type Props = {
@@ -22,14 +22,15 @@ export const ItemMovieCardFavorite = ({ info, ...rest }: Props) => {
   }
 
   return (
-    <S.Container {...rest}>
+    <S.Container {...rest} testID="container-item-movie-card-favorite">
       <S.ImagePoster
+        testID="image-poster"
         source={{
           uri: `https://image.tmdb.org/t/p/w500${info.poster_path}`,
         }}
       />
 
-      <S.Badge onPress={handleToggleFavorite}>
+      <S.Badge onPress={handleToggleFavorite} testID="badge">
         <MaterialIcons
           name={isFavorite ? 'favorite' : 'favorite-outline'}
           size={24}
