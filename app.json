@@ -1,0 +1,30 @@
+{
+  "expo": {
+    "name": "movies-app",
+    "slug": "movies-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "assetBundlePatterns": ["**/*"],
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./src/assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#16171B"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.moviesapp",
+      "icon": "./src/assets/images/icon.png",
+      "entitlements": {
+        "aps-environment": "production"
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./src/assets/images/adaptive-icon.png",
+        "backgroundColor": "#16171B"
+      },
+      "package": "com.moviesapp"
+    }
+  }
+}
