@@ -22,12 +22,13 @@ export const FavoritePage = () => {
         <S.ActionRight onPress={() => navigation.navigate('HomePage')}>
           <Feather name='arrow-left' size={24} color='#fff' />
         </S.ActionRight>
-      </S.Header>
 
-      <S.SessionMovies>
         <S.SessionMoviesTitle>
           Meus filmes favoritos
         </S.SessionMoviesTitle>
+      </S.Header>
+
+      <S.SessionMovies>
         <S.ListMovies
           data={favorites}
           keyExtractor={(item) => item.id.toString()}

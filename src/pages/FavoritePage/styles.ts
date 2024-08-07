@@ -12,8 +12,9 @@ export const Container = styled.View`
 export const Header = styled.View`
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
+  
+  gap: 20px;
+  padding: 0 16px;
 `;
 
 export const ActionRight = styled.TouchableOpacity`
@@ -34,8 +35,6 @@ export const SessionMoviesTitle = styled.Text`
   font-family: ${({ theme }) => theme.fonts.bold};
 
   color: ${({ theme }) => theme.colors.primary};
-
-  margin-bottom: 10px;
 `;
 
 export const ListMovies = styled.FlatList.attrs({
