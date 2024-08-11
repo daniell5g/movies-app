@@ -1,11 +1,9 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Movie } from '@utils/interfaces';
-import { create } from 'zustand';
+import create from 'zustand';
 import { persist } from 'zustand/middleware';
 
 import { FAVORITES_KEY } from '../configs/constants';
-import { AsyncStorageImpl } from '../libs/storage/async-storage';
-
-const storage = new AsyncStorageImpl();
 
 interface FavoritesState {
   favorites: Movie[];
@@ -27,19 +25,8 @@ export const useFavoritesStore = create<FavoritesState>()(
       },
     }),
     {
-      name: 'favorites-storage',
-      storage: {
-        getItem: async () => {
-          const value = await storage.getItem(FAVORITES_KEY);
-          return value ? JSON.parse(value) : null;
-        },
-        setItem: async (value) => {
-          await storage.setItem(FAVORITES_KEY, JSON.stringify(value));
-        },
-        removeItem: async () => {
-          await storage.removeItem(FAVORITES_KEY);
-        },
-      },
+      name: FAVORITES_KEY,
+      getStorage: () => AsyncStorage,
     }
   )
 );
