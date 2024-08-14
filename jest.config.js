@@ -2,8 +2,7 @@ module.exports = {
   preset: 'react-native',
   setupFiles: ['./jest.setup.js'],
   setupFilesAfterEnv: [
-    '<rootDir>/__mocks__/globalMock.js', 
-    '@testing-library/react-native/dont-cleanup-after-each'
+    '<rootDir>/__mocks__/globalMock.js'
   ],
   transform: {
     '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest',
