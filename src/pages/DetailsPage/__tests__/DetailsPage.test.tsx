@@ -2,6 +2,7 @@ import { useMovieDetails } from '@hooks/useMovieDetails';
 import { useNetworkStatus } from '@hooks/useNetworkStatus';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { fireEvent, render, waitFor } from '@testing-library/react-native';
+import { format } from 'date-fns';
 import React from 'react';
 import { ThemeProvider } from 'styled-components/native';
 
@@ -93,7 +94,9 @@ describe('DetailsPage Tests', () => {
 
     expect(getByText('Filme do Batman')).toBeTruthy();
     expect(getByText('Isso é a sinopse do filme do Batman.')).toBeTruthy();
-    expect(getByText('06/08/2024')).toBeTruthy(); // ?? Timezone
+
+    const formattedDate = format(new Date('2024-08-07T00:00:00Z'), 'dd/MM/yyyy');
+    expect(getByText(formattedDate)).toBeTruthy(); // ?? Timezone
   });
 
   it('should navigate back to home page when back button is pressed', () => {
