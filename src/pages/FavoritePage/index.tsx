@@ -11,11 +11,6 @@ export const FavoritePage = () => {
   const { favorites } = useFavoritesStore();
   const navigation = useNavigation();
 
-  const componentMovieItem = ({ item }: { item: Movie }) =>
-  (
-    <ItemMovieCardFavorite info={item} />
-  )
-
   return (
     <S.Container>
       <S.Header>
@@ -33,7 +28,7 @@ export const FavoritePage = () => {
           data={favorites}
           keyExtractor={(item) => item.id.toString()}
           numColumns={2}
-          renderItem={componentMovieItem}
+          renderItem={({ item }: { item: Movie }) => <ItemMovieCardFavorite info={item} />}
           onEndReachedThreshold={0.5}
           showsVerticalScrollIndicator={false}
           ListEmptyComponent={() => {
