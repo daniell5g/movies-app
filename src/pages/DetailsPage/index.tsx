@@ -1,44 +1,23 @@
 import MovieDetailCard from '@components/MovieDetailCard';
 import { Feather, MaterialIcons } from '@expo/vector-icons'
-import { useMovieDetails } from '@hooks/useMovieDetails';
 import { useNetworkStatus } from '@hooks/useNetworkStatus';
-import { useNavigation, useRoute } from '@react-navigation/native';
 import { formatTime } from '@utils/format-time';
 import { format } from 'date-fns';
 import React, { useEffect } from 'react'
 import { ScrollView } from 'react-native-gesture-handler';
-import { useFavoritesStore } from 'src/store/favoritesStore';
 
 import * as S from './styles'
-
-type Props = {
-  movieId: number;
-}
+import { useDetailsPageViewModel } from './viewModel';
 
 export const DetailsPage = () => {
   const isConnected = useNetworkStatus();
-  const navigation = useNavigation();
-  const route = useRoute();
-
-  const { movieId } = route.params as Props;
-  const { movieDetails, loading } = useMovieDetails(movieId);
-  const { favorites, addFavorite, removeFavorite } = useFavoritesStore();
-
-  const isFavorite = favorites.some((movie) => movie.id === movieId);
-
-  const handleGoBack = () => {
-    navigation.navigate('HomePage');
-  }
-
-  const handleToggleFavorite = () => {
-    if (movieDetails) {
-      if (isFavorite) {
-        removeFavorite(movieId);
-      } else {
-        addFavorite(movieDetails);
-      }
-    }
-  }
+  const {
+    isFavorite,
+    loading,
+    movieDetails,
+    handleGoBack,
+    handleToggleFavorite
+  } = useDetailsPageViewModel();
 
   useEffect(() => {
     if (!isConnected) {

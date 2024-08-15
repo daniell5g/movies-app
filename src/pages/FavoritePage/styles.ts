@@ -17,7 +17,9 @@ export const Header = styled.View`
   padding: 0 16px;
 `;
 
-export const ActionRight = styled.TouchableOpacity`
+export const ActionRight = styled.TouchableOpacity.attrs({
+  testID: 'back-button',
+})`
   background-color: ${({ theme }) => theme.colors.tertiary};
   padding: 10px;
   border-radius: 100px;
@@ -78,7 +80,9 @@ export const AlertBannerText = styled.Text`
   color: #fc7676;
 `
 
-export const ListEmptyComponent = styled.View`
+export const ListEmptyComponent = styled.View.attrs({
+  testID: 'empty-component',
+})`
   flex: 1;
   justify-content: center;
   align-items: center;

@@ -22,7 +22,9 @@ export const NameApp = styled.Text`
   color: ${({ theme }) => theme.colors.secondary};
 `;
 
-export const ActionHeaderRight = styled.TouchableOpacity``
+export const ActionHeaderRight = styled.TouchableOpacity.attrs({
+  testID: 'settings-button'
+})``
 
 export const SessionSearch = styled.View`
   flex-direction: column;
@@ -51,7 +53,9 @@ export const SearchInput = styled.TextInput.attrs({
   color: ${({ theme }) => theme.colors.primary};
 `
 
-export const TextMovieNotFound = styled.Text`
+export const TextMovieNotFound = styled.Text.attrs({
+  testID: 'text-movie-not-found'
+})`
   font-size: 14px;
   font-family: ${({ theme }) => theme.fonts.secondaryRegular};
 
@@ -96,7 +100,8 @@ export const LoadingMoviesContainer = styled.View`
 
 export const LoadingMoviesIndicator = styled.ActivityIndicator.attrs({
   size: 'large',
-  color: '#EC8B00'
+  color: '#EC8B00',
+  testID: 'loading-indicator'
 })``
 
 export const AlertBanner = styled.View`
@@ -111,7 +116,9 @@ export const AlertBanner = styled.View`
   background-color: black;
 `;
 
-export const AlertBannerText = styled.Text`
+export const AlertBannerText = styled.Text.attrs({
+  testID: 'alert-banner-text',
+})`
   font-size: 12px;
   font-family: ${({ theme }) => theme.fonts.secondaryRegular};
 
@@ -134,7 +141,9 @@ export const EmptyText = styled.Text`
   color: #e5e5e5;
 `
 
-export const FloatingActionFavorite = styled.TouchableOpacity`
+export const FloatingActionFavorite = styled.TouchableOpacity.attrs({
+  testID: 'favorite-button'
+})`
   position: absolute;
   bottom: 20px;
   right: 20px;

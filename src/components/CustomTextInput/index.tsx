@@ -8,18 +8,28 @@ interface Props extends TextInputProps {
   label: string;
   leftIcon?: React.ComponentProps<typeof Feather>['name'];
   isPassword?: boolean;
+  testIDIcon?: string;
 }
 
-const CustomTextInput: React.FC<Props> = ({ label, leftIcon, isPassword, ...props }) => {
+const CustomTextInput: React.FC<Props> = ({ label, leftIcon, testIDIcon, isPassword, ...props }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [text, setText] = useState('');
 
   return (
-    <S.Container {...props}>
-      <S.Label isFocused={isFocused || !!text}>{label}</S.Label>
+    <S.Container {...props} testID="container-input-custom">
+      <S.Label testID="label-input-custom" isFocused={isFocused || !!text}>{label}</S.Label>
       <S.InputContainer>
-        {leftIcon && <S.LeftIcon name={leftIcon} size={24} color='#fff' />}
+        {leftIcon && (
+          <Feather
+            testID={testIDIcon}
+            name={leftIcon}
+            size={24}
+            color='#fff'
+            style={{ marginRight: 10 }}
+          />
+        )}
         <S.StyledTextInput
+          testID="input-text-custom"
           secureTextEntry={isPassword}
           onFocus={() => setIsFocused(true)}
           value={text}
@@ -28,7 +38,7 @@ const CustomTextInput: React.FC<Props> = ({ label, leftIcon, isPassword, ...prop
         />
         {text.length > 0 && (
           <TouchableOpacity onPress={() => setText('')}>
-            <S.ClearIcon name="x" size={24} color="#fff" />
+            <Feather name="x" size={24} color="#fff" style={{ marginRight: 10 }} />
           </TouchableOpacity>
         )}
       </S.InputContainer>

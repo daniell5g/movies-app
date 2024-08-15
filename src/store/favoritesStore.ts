@@ -1,8 +1,8 @@
 import { Movie } from '@utils/interfaces';
-import { FAVORITES_KEY } from 'src/configs/constants';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
+import { FAVORITES_KEY } from '../configs/constants';
 import { AsyncStorageImpl } from '../libs/storage/async-storage';
 
 const storage = new AsyncStorageImpl();
@@ -27,7 +27,7 @@ export const useFavoritesStore = create<FavoritesState>()(
       },
     }),
     {
-      name: 'favorites-storage',
+      name: FAVORITES_KEY,
       storage: {
         getItem: async () => {
           const value = await storage.getItem(FAVORITES_KEY);

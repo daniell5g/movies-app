@@ -1,8 +1,9 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
-import { ConfigAccessibilityPage } from 'src/pages/ConfigAccessibilityPage';
-import { SignInPage } from 'src/pages/SignInPage';
-import { SplashPage } from 'src/pages/SplashPage';
+
+import { ConfigAccessibilityPage } from '../pages/ConfigAccessibilityPage';
+import { SignInPage } from '../pages/SignInPage';
+import { SplashPage } from '../pages/SplashPage';
 
 const { Navigator, Screen } = createNativeStackNavigator();
 

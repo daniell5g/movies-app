@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
+import { THEME_KEY } from '../configs/constants';
 import { AsyncStorageImpl } from '../libs/storage/async-storage';
 import { ThemeName, themes, ThemeType } from '../theme';
 
@@ -20,12 +21,12 @@ export const useThemeStore = create<ThemeStore>()(
       changeTheme: async (newTheme: ThemeName) => {
         if (themes[newTheme]) {
           set({ theme: themes[newTheme] });
-          await storage.setItem('THEME_KEY', JSON.stringify(newTheme));
+          await storage.setItem(THEME_KEY, JSON.stringify(newTheme));
         }
       },
     }),
     {
-      name: 'theme-storage',
+      name: THEME_KEY,
       storage: {
         getItem: async (name: string) => {
           const value = await storage.getItem(name);

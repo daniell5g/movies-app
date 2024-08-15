@@ -25,7 +25,9 @@ export const ActionRight = styled.TouchableOpacity`
   border-radius: 100px;
 `;
 
-export const Title = styled.Text`
+export const Title = styled.Text.attrs({
+  testID: 'title-settings-page',
+})`
   font-size: 20px;
   font-family: ${({ theme }) => theme.fonts.bold};
 
@@ -71,7 +73,9 @@ export const ButtonText = styled.Text`
   color: ${({ theme }) => theme.colors.secondary};
 `;
 
-export const ButtonLogout = styled.TouchableOpacity`
+export const ButtonLogout = styled.TouchableOpacity.attrs({
+  testID: 'logout-button',
+})`
   position: absolute;
   bottom: 20px;
   right: 20px;
