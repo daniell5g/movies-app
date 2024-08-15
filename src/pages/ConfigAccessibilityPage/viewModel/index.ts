@@ -14,6 +14,7 @@ const useConfigAccessibilityViewModel = () => {
   const [selected, setSelected] = useState<ThemeName>('default')
 
   const options = [
+    { label: 'Normal', value: 'default', testID: 'default-picker-item' },
     { label: 'Protanopia', value: 'protanopia', testID: 'protanopia-picker-item' },
     { label: 'Deuteranopia', value: 'deuteranopia', testID: 'deuteranopia-picker-item' },
     { label: 'Tritanopia', value: 'tritanopia', testID: 'tritanopia-picker-item' },
