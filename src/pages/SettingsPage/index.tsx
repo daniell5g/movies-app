@@ -1,29 +1,17 @@
 import { ImageLogo } from '@components/Logo'
 import { Feather } from '@expo/vector-icons';
 import { useAuth } from '@hooks/useAuth';
-import { useThemeSwitcher } from '@hooks/useThemeSwitcher';
 import { useNavigation } from '@react-navigation/native';
-import React, { useCallback, useState } from 'react'
+import React from 'react'
 import RNPickerSelect from 'react-native-picker-select';
-import { CONFIG_ACCESSIBILITY_KEY } from 'src/configs/constants';
-import { AsyncStorageImpl } from 'src/libs/storage/async-storage';
-import type { ThemeName } from 'src/theme';
 
 import * as S from './styles'
+import { useSettingsViewModel } from './viewModel';
 
 export const SettingsPage = () => {
-  const { changeTheme, theme } = useThemeSwitcher()
   const { logout } = useAuth()
   const navigation = useNavigation();
-
-  const [selected, setSelected] = useState<ThemeName>('default')
-
-  const handleChange = useCallback(async () => {
-    const storage = new AsyncStorageImpl()
-
-    changeTheme(selected)
-    await storage.setItem(CONFIG_ACCESSIBILITY_KEY, selected)
-  }, [selected])
+  const { options, theme, setSelected, handleChange } = useSettingsViewModel()
 
   return (
     <S.Container>
@@ -43,12 +31,9 @@ export const SettingsPage = () => {
 
       <RNPickerSelect
         onValueChange={(value) => setSelected(value)}
-        placeholder={{ label: 'Selecione uma opção', value: 'default' }}
-        items={[
-          { label: 'Protanopia', value: 'protanopia' },
-          { label: 'Deuteranopia', value: 'deuteranopia' },
-          { label: 'Tritanopia', value: 'tritanopia' },
-        ]}
+        placeholder={{ label: 'Selecione uma opção', value: '' }}
+        touchableWrapperProps={{ testID: 'picker-select' }}
+        items={options}
         style={{
           placeholder: {
             color: '#fff',
@@ -66,7 +51,7 @@ export const SettingsPage = () => {
 
       <S.Button onPress={handleChange}>
         <S.ButtonText>
-          {selected === 'default' ? 'Desejo pular' : 'Definir configuração'}
+          Definir configuração
         </S.ButtonText>
       </S.Button>
 

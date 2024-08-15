@@ -1,4 +1,4 @@
-import '@testing-library/jest-native/extend-expect';
+import '@testing-library/react-native/extend-expect';
 
 import { fireEvent, render, } from '@testing-library/react-native';
 import { ThemeProvider } from 'styled-components/native';

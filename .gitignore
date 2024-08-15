@@ -2,11 +2,18 @@
 
 # dependencies
 node_modules/
+npm-debug.log
+yarn-error.log
+
+# jest
+__tests__/coverage
+**/__tests__/__snapshots__/**.snap
 
 # Expo
 .expo/
 dist/
 web-build/
+json_keys.json
 
 # Native
 *.orig.*

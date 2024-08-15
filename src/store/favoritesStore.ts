@@ -27,7 +27,7 @@ export const useFavoritesStore = create<FavoritesState>()(
       },
     }),
     {
-      name: 'favorites-storage',
+      name: FAVORITES_KEY,
       storage: {
         getItem: async () => {
           const value = await storage.getItem(FAVORITES_KEY);
