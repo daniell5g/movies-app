@@ -1,6 +1,7 @@
 jest.mock('@expo/vector-icons', () => ({
   Feather: '',
-  MaterialIcons: ''
+  MaterialIcons: '',
+  AntDesign: '',
 }))
 
 jest.mock('@react-navigation/native', () => ({
