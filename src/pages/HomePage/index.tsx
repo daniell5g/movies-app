@@ -4,8 +4,8 @@ import { useNetworkStatus } from '@hooks/useNetworkStatus';
 import { useNavigation } from '@react-navigation/native';
 import type { Movie } from '@utils/interfaces';
 import React, { useEffect, useRef, useState } from 'react';
-import { api } from 'src/services/axios/api';
 
+import { api } from '../../services/axios/api';
 import * as S from './styles';
 
 export const HomePage = () => {

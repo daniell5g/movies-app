@@ -7,8 +7,8 @@ import { formatTime } from '@utils/format-time';
 import { format } from 'date-fns';
 import React, { useEffect } from 'react'
 import { ScrollView } from 'react-native-gesture-handler';
-import { useFavoritesStore } from 'src/store/favoritesStore';
 
+import { useFavoritesStore } from '../../store/favoritesStore';
 import * as S from './styles'
 
 type Props = {

@@ -3,8 +3,8 @@ import { AntDesign, Feather } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native';
 import type { Movie } from '@utils/interfaces';
 import React from 'react'
-import { useFavoritesStore } from 'src/store/favoritesStore';
 
+import { useFavoritesStore } from '../../store/favoritesStore';
 import * as S from './styles'
 
 export const FavoritePage = () => {

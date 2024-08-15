@@ -5,10 +5,10 @@ import { useThemeSwitcher } from '@hooks/useThemeSwitcher';
 import { useNavigation } from '@react-navigation/native';
 import React, { useCallback, useState } from 'react'
 import RNPickerSelect from 'react-native-picker-select';
-import { CONFIG_ACCESSIBILITY_KEY } from 'src/configs/constants';
-import { AsyncStorageImpl } from 'src/libs/storage/async-storage';
-import type { ThemeName } from 'src/theme';
 
+import { CONFIG_ACCESSIBILITY_KEY } from '../../configs/constants';
+import { AsyncStorageImpl } from '../../libs/storage/async-storage';
+import type { ThemeName } from '../../theme';
 import * as S from './styles'
 
 export const SettingsPage = () => {
