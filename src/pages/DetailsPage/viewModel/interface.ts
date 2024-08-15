@@ -4,6 +4,6 @@ export interface IDetailsPageViewModel {
   loading: boolean
   isFavorite: boolean
   movieDetails: Movie | null
-  handleGoBack: () => void
-  handleToggleFavorite: () => void
+  handleGoBack(): void
+  handleToggleFavorite(): void
 }

@@ -1,7 +1,7 @@
 import { useMovieDetails } from '@hooks/useMovieDetails';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { useFavoritesStore } from 'src/store/favoritesStore';
 
+import { useFavoritesStore } from '../../../store/favoritesStore';
 import type { IDetailsPageViewModel } from './interface';
 
 type Props = {
@@ -18,11 +18,11 @@ const useDetailsPageViewModel = () => {
 
   const isFavorite = favorites.some((movie) => movie.id === movieId);
 
-  const handleGoBack = () => {
+  function handleGoBack() {
     navigation.navigate('HomePage');
   }
 
-  const handleToggleFavorite = () => {
+  function handleToggleFavorite() {
     if (movieDetails) {
       if (isFavorite) {
         removeFavorite(movieId);
