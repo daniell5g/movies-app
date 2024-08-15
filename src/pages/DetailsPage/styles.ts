@@ -21,13 +21,17 @@ export const Header = styled.View`
   z-index: 10;
 `;
 
-export const ActionLeft = styled.TouchableOpacity`
+export const ActionLeft = styled.TouchableOpacity.attrs({
+  testID: 'back-button'
+})`
   background-color: ${({ theme }) => theme.colors.tertiary};
   padding: 10px;
   border-radius: 100px;
 `
 
-export const ActionRight = styled.TouchableOpacity`
+export const ActionRight = styled.TouchableOpacity.attrs({
+  testID: 'favorite-button'
+})`
   background-color: ${({ theme }) => theme.colors.tertiary};
   padding: 10px;
   border-radius: 100px;
@@ -49,7 +53,8 @@ export const LoadingIndicatorContainer = styled.View`
 
 export const LoadingIndicator = styled.ActivityIndicator.attrs({
   size: 'large',
-  color: '#EC8B00'
+  color: '#EC8B00',
+  testID: 'loading-indicator'
 })``
 
 export const ImagePoster = styled.Image`
