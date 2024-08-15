@@ -10,7 +10,9 @@ export const useNetworkStatus = () => {
     });
 
     return () => {
-      unsubscribe();
+      if (typeof unsubscribe === 'function') {
+        unsubscribe();
+      }
     };
   }, []);
 
