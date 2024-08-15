@@ -7,7 +7,7 @@
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web",
-    "test": "jest --updateSnapshot"
+    "test": "node ./node_modules/jest/bin/jest.js --updateSnapshot"
   },
   "dependencies": {
     "@expo-google-fonts/nunito": "^0.2.3",
