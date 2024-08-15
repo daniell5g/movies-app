@@ -38,8 +38,6 @@ describe('HomePage Tests', () => {
       handleSearchMovies: jest.fn(),
       loadMoreMovies: jest.fn(),
       handleNavigatitonToDetailsPage: navigateMock,
-      handleNavigatitonToFavoritePage: navigateMock,
-      handleNavigatitonToSettingsPage: navigateMock
     });
   });
 
@@ -97,8 +95,6 @@ describe('HomePage Tests', () => {
       handleSearchMovies: jest.fn(),
       loadMoreMovies: jest.fn(),
       handleNavigatitonToDetailsPage: navigateMock,
-      handleNavigatitonToFavoritePage: navigateMock,
-      handleNavigatitonToSettingsPage: navigateMock
     });
 
     (useNetworkStatus as jest.Mock).mockReturnValue(true);
@@ -124,8 +120,6 @@ describe('HomePage Tests', () => {
       handleSearchMovies: handleSearchMoviesMock,
       loadMoreMovies: jest.fn(),
       handleNavigatitonToDetailsPage: navigateMock,
-      handleNavigatitonToFavoritePage: navigateMock,
-      handleNavigatitonToSettingsPage: navigateMock
     });
 
     (useNetworkStatus as jest.Mock).mockReturnValue(true);
@@ -153,8 +147,6 @@ describe('HomePage Tests', () => {
       handleSearchMovies: handleSearchMoviesMock,
       loadMoreMovies: jest.fn(),
       handleNavigatitonToDetailsPage: navigateMock,
-      handleNavigatitonToFavoritePage: navigateMock,
-      handleNavigatitonToSettingsPage: navigateMock
     });
 
     await waitFor(() => {
@@ -174,8 +166,6 @@ describe('HomePage Tests', () => {
       handleSearchMovies: jest.fn(),
       loadMoreMovies: jest.fn(),
       handleNavigatitonToDetailsPage: navigateMock,
-      handleNavigatitonToFavoritePage: navigateMock,
-      handleNavigatitonToSettingsPage: navigateMock
     });
 
     const { getByTestId } = render(
@@ -202,8 +192,6 @@ describe('HomePage Tests', () => {
       handleSearchMovies: jest.fn(),
       loadMoreMovies: jest.fn(),
       handleNavigatitonToDetailsPage: navigateMock,
-      handleNavigatitonToFavoritePage: navigateMock,
-      handleNavigatitonToSettingsPage: navigateMock
     });
 
     (useNetworkStatus as jest.Mock).mockReturnValue(true);
@@ -228,8 +216,6 @@ describe('HomePage Tests', () => {
       handleSearchMovies: jest.fn(),
       loadMoreMovies: jest.fn(),
       handleNavigatitonToDetailsPage: navigateMock,
-      handleNavigatitonToFavoritePage: navigateMock,
-      handleNavigatitonToSettingsPage: navigateMock
     });
 
     const { getByTestId } = render(
