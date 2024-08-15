@@ -34,7 +34,6 @@ export const FavoritePage = () => {
           keyExtractor={(item) => item.id.toString()}
           numColumns={2}
           renderItem={componentMovieItem}
-
           onEndReachedThreshold={0.5}
           showsVerticalScrollIndicator={false}
           ListEmptyComponent={() => {
