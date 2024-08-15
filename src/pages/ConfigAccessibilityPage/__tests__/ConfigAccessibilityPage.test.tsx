@@ -5,14 +5,6 @@ import { ThemeProvider } from 'styled-components/native';
 import { themes } from '../../../theme';
 import { ConfigAccessibilityPage } from '../';
 
-jest.mock('@react-navigation/native', () => ({
-  useNavigation: jest.fn(),
-}));
-
-jest.mock('../viewModel', () => ({
-  useConfigAccessibilityViewModel: jest.fn(),
-}));
-
 describe('ConfigAccessibilityPage', () => {
   it('renders correctly', () => {
     const { getByText } = render(
