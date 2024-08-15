@@ -15,7 +15,6 @@ module.exports = {
     '**/?(*.)+(spec|test).[jt]s?(x)', 
   ],
   collectCoverage: true, 
-  silent: true,
   coverageDirectory: '__tests__/coverage', 
   collectCoverageFrom: [
     './src/components/**/*.tsx',  
