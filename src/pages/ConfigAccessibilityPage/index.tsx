@@ -1,28 +1,12 @@
 import { ImageLogo } from '@components/Logo'
-import { useThemeSwitcher } from '@hooks/useThemeSwitcher';
-import { useNavigation } from '@react-navigation/native';
-import React, { useCallback, useState } from 'react'
+import React, { } from 'react'
 import RNPickerSelect from 'react-native-picker-select';
-import { CONFIG_ACCESSIBILITY_KEY } from 'src/configs/constants';
-import { AsyncStorageImpl } from 'src/libs/storage/async-storage';
-import type { ThemeName } from 'src/theme';
 
 import * as S from './styles'
+import { useConfigAccessibilityViewModel } from './viewModel';
 
 export const ConfigAccessibilityPage = () => {
-  const { changeTheme } = useThemeSwitcher()
-  const navigation = useNavigation()
-
-  const [selected, setSelected] = useState<ThemeName>('default')
-
-  const handleChange = useCallback(async () => {
-    const storage = new AsyncStorageImpl()
-
-    changeTheme(selected)
-    await storage.setItem(CONFIG_ACCESSIBILITY_KEY, selected)
-
-    navigation.navigate('SignInPage')
-  }, [selected])
+  const { options, selected, setSelected, handleChange } = useConfigAccessibilityViewModel()
 
   return (
     <S.Container>
@@ -42,11 +26,8 @@ export const ConfigAccessibilityPage = () => {
       <RNPickerSelect
         onValueChange={(value) => setSelected(value)}
         placeholder={{ label: 'Selecione uma opção', value: 'default' }}
-        items={[
-          { label: 'Protanopia', value: 'protanopia' },
-          { label: 'Deuteranopia', value: 'deuteranopia' },
-          { label: 'Tritanopia', value: 'tritanopia' },
-        ]}
+        items={options}
+        touchableWrapperProps={{ testID: 'picker-select' }}
         style={{
           placeholder: {
             color: '#fff',
@@ -62,7 +43,7 @@ export const ConfigAccessibilityPage = () => {
         }}
       />
 
-      <S.Button onPress={handleChange}>
+      <S.Button onPress={handleChange} testID="button-config-accessibility">
         <S.ButtonText>
           {selected === 'default' ? 'Desejo pular' : 'Definir configuração'}
         </S.ButtonText>
