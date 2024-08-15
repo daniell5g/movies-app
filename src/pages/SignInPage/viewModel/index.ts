@@ -3,8 +3,8 @@ import { useAuth } from '@hooks/useAuth';
 import { useNetworkStatus } from '@hooks/useNetworkStatus';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { type AuthFormData, authSchema } from 'src/libs/zod/user';
 
+import { type AuthFormData, authSchema } from '../../../libs/zod/user';
 import type { ISignInViewModel } from './interface';
 
 const useSignInViewModel = () => {
