@@ -1,29 +1,17 @@
 import { ImageLogo } from '@components/Logo'
 import { Feather } from '@expo/vector-icons';
 import { useAuth } from '@hooks/useAuth';
-import { useThemeSwitcher } from '@hooks/useThemeSwitcher';
 import { useNavigation } from '@react-navigation/native';
-import React, { useCallback, useState } from 'react'
+import React from 'react'
 import RNPickerSelect from 'react-native-picker-select';
 
-import { CONFIG_ACCESSIBILITY_KEY } from '../../configs/constants';
-import { AsyncStorageImpl } from '../../libs/storage/async-storage';
-import type { ThemeName } from '../../theme';
 import * as S from './styles'
+import { useSettingsViewModel } from './viewModel';
 
 export const SettingsPage = () => {
-  const { changeTheme, theme } = useThemeSwitcher()
   const { logout } = useAuth()
   const navigation = useNavigation();
-
-  const [selected, setSelected] = useState<ThemeName>('default')
-
-  const handleChange = useCallback(async () => {
-    const storage = new AsyncStorageImpl()
-
-    changeTheme(selected)
-    await storage.setItem(CONFIG_ACCESSIBILITY_KEY, selected)
-  }, [selected])
+  const { selected, theme, setSelected, handleChange } = useSettingsViewModel()
 
   return (
     <S.Container>
@@ -45,6 +33,7 @@ export const SettingsPage = () => {
         onValueChange={(value) => setSelected(value)}
         placeholder={{ label: 'Selecione uma opção', value: 'default' }}
         items={[
+          { label: 'Normal', value: 'default' },
           { label: 'Protanopia', value: 'protanopia' },
           { label: 'Deuteranopia', value: 'deuteranopia' },
           { label: 'Tritanopia', value: 'tritanopia' },
