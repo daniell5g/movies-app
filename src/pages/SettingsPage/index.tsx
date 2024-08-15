@@ -11,7 +11,7 @@ import { useSettingsViewModel } from './viewModel';
 export const SettingsPage = () => {
   const { logout } = useAuth()
   const navigation = useNavigation();
-  const { selected, theme, setSelected, handleChange } = useSettingsViewModel()
+  const { options, theme, setSelected, handleChange } = useSettingsViewModel()
 
   return (
     <S.Container>
@@ -31,13 +31,9 @@ export const SettingsPage = () => {
 
       <RNPickerSelect
         onValueChange={(value) => setSelected(value)}
-        placeholder={{ label: 'Selecione uma opção', value: 'default' }}
-        items={[
-          { label: 'Normal', value: 'default' },
-          { label: 'Protanopia', value: 'protanopia' },
-          { label: 'Deuteranopia', value: 'deuteranopia' },
-          { label: 'Tritanopia', value: 'tritanopia' },
-        ]}
+        placeholder={{ label: 'Selecione uma opção', value: '' }}
+        touchableWrapperProps={{ testID: 'picker-select' }}
+        items={options}
         style={{
           placeholder: {
             color: '#fff',
@@ -55,7 +51,7 @@ export const SettingsPage = () => {
 
       <S.Button onPress={handleChange}>
         <S.ButtonText>
-          {selected === 'default' ? 'Desejo pular' : 'Definir configuração'}
+          Definir configuração
         </S.ButtonText>
       </S.Button>
 
